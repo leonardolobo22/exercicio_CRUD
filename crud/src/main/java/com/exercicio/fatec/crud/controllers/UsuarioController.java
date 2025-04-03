@@ -68,8 +68,8 @@ public class UsuarioController {
 
     @GetMapping("/buscarUsuario/{id}")
     public ResponseEntity<?> buscarUsuarioPorId(@PathVariable Long id) {
-        Optional<Usuario> cliente = clienteService.buscarClientePorId(id);
-        return Usuario.<ResponseEntity<?>>map(ResponseEntity::ok)
+        Optional<Usuario> usuario = UsuarioService.buscarUsuarioPorId(id);
+        return usuario.<ResponseEntity<?>>map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario com ID " + id + " não encontrado."));
 
 

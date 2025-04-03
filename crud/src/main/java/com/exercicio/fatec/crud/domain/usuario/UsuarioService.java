@@ -26,19 +26,19 @@ public class UsuarioService {
 
     public boolean atualizarUsuario(Long id, Usuario usuarioAtualizado) {
         Optional<Usuario> usuarioOptional = buscarUsuarioPorId(id);
-        if (clienteOptional.isPresent()) {
-            Usuario usuario = clienteOptional.get();
+        if (usuarioOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
             usuario.setNome(usuarioAtualizado.getNome());
             usuario.setIdade(usuarioAtualizado.getIdade());
             usuario.setEndereco(usuarioAtualizado.getEndereco());
-            UsuarioRepository.save(usuario);
+            usuarioRepository.save(usuario);
             return true;
         }
         return false;
     }
 
     public boolean deletarUsuario(Long id) {
-        if (usuarioeRepository.existsById(id)) {
+        if (usuarioRepository.existsById(id)) {
             usuarioRepository.deleteById(id);
             return true;
         }
